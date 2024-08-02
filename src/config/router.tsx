@@ -1,20 +1,25 @@
-import AuthLayout from "@/components/layouts/auth-layout";
-import Login from "@/pages/auth/login";
-import Register from "@/pages/auth/register";
+import RootLayout from "@/components/layouts/root-layout";
+import DetailPage from "@/pages/detail-page";
+import FormInputPage from "@/pages/form-input-page";
+import RootPage from "@/pages/root/root-page";
 import { createBrowserRouter } from "react-router-dom";
 
 export default createBrowserRouter([
   {
     path: "/",
-    element: <AuthLayout />,
+    element: <RootLayout />,
     children: [
       {
-        path: "login",
-        element: <Login />,
+        path: "/",
+        element: <RootPage />,
       },
       {
-        path: "register",
-        element: <Register />,
+        path: "/detail/:id",
+        element: <DetailPage />,
+      },
+      {
+        path: "/form",
+        element: <FormInputPage />,
       },
     ],
   },
