@@ -34,4 +34,18 @@ const getAll = async () => {
   }
 };
 
-export default { create, getAll };
+const findOne = async (code: string) => {
+  try {
+    const response = await api.get<Transaction>(`/transactions/${code}`);
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (error.response?.status === 404) {
+        window.location.href = "/";
+      }
+      throw new Error(error.message);
+    }
+  }
+};
+
+export default { create, getAll, findOne };

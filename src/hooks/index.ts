@@ -20,3 +20,10 @@ export const useTransactions = () =>
     queryKey: ["transactions"],
     queryFn: transactionService.getAll,
   });
+
+export const useTransaction = (id: string) =>
+  useQuery({
+    queryKey: ["transaction", id],
+    queryFn: () => transactionService.findOne(id),
+    retry: false,
+  });

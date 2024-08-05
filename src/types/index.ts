@@ -17,8 +17,13 @@ export type Customer = {
 };
 
 export type TransactionDetail = {
-  sales_id: number;
-  barang_id: number;
+  hargaBandrol: string;
+  qty: number;
+  diskonPct: string;
+  diskonNilai: string;
+  hargaDiskon: string;
+  total: string;
+  barang: Product;
 };
 
 export type Product = {
