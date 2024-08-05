@@ -20,3 +20,21 @@ export type TransactionDetail = {
   sales_id: number;
   barang_id: number;
 };
+
+export type Product = {
+  kode: string;
+  nama: string;
+  harga: number;
+  diskon: number;
+  price_discount: number;
+};
+
+export type Cart = {
+  kode: string;
+  nama: string;
+  harga: number;
+  diskon: number;
+  price_discount: number;
+  qty: number;
+  total: number;
+};

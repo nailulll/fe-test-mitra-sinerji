@@ -1,6 +1,6 @@
 import RootLayout from "@/components/layouts/root-layout";
 import DetailPage from "@/pages/detail-page";
-import FormInputPage from "@/pages/form-input-page";
+import FormInputPage from "@/pages/form-input/form-input-page";
 import RootPage from "@/pages/root/root-page";
 import { createBrowserRouter } from "react-router-dom";
 
