@@ -3,11 +3,11 @@ import { columns } from "./column";
 import { useTransactions } from "@/hooks";
 
 const RootPage = () => {
-  const { data } = useTransactions();
+  const { data, isLoading } = useTransactions();
 
   return (
     <>
-      <DataTable data={data || []} columns={columns} />
+      <DataTable data={data || []} columns={columns} loading={isLoading} />
     </>
   );
 };
