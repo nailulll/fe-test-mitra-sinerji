@@ -1,5 +1,6 @@
 import api from "@/config/api";
 import { formSchema } from "@/lib/validations/form-schema";
+import { Transaction } from "@/types";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -22,4 +23,15 @@ const create = async (values: z.infer<typeof formSchema>) => {
   }
 };
 
-export default { create };
+const getAll = async () => {
+  try {
+    const response = await api.get<Transaction[]>("/transactions");
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw error.message;
+    }
+  }
+};
+
+export default { create, getAll };

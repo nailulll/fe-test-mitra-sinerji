@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { toIdr } from "@/lib/utils";
 import { Transaction } from "@/types";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { ColumnDef } from "@tanstack/react-table";
+import { format } from "date-fns";
 
 export const columns: ColumnDef<Transaction>[] = [
   {
@@ -10,37 +12,54 @@ export const columns: ColumnDef<Transaction>[] = [
     cell: ({ row }) => row.index + 1,
   },
   {
+    id: "kode",
     accessorKey: "kode",
     header: "Kode",
   },
   {
     accessorKey: "tgl",
     header: "Tgl",
+    cell: ({ row }) => {
+      return format(row.original.tgl, "dd-MMM-yyyy");
+    },
   },
   {
+    id: "customer.name",
     accessorKey: "customer.name",
     header: "Customer",
   },
   {
     accessorKey: "products",
     header: "Jumlah Barang",
-    cell: ({ row }) => row.original.products.length,
+    cell: ({ row }) => row.original.details.length,
   },
   {
     accessorKey: "subtotal",
     header: "Subtotal",
+    cell: ({ row }) => {
+      return toIdr(row.original.subtotal);
+    },
   },
   {
     accessorKey: "diskon",
     header: "Diskon",
+    cell: ({ row }) => {
+      return toIdr(row.original.diskon);
+    },
   },
   {
     accessorKey: "ongkir",
     header: "Ongkir",
+    cell: ({ row }) => {
+      return toIdr(row.original.ongkir);
+    },
   },
   {
-    accessorKey: "total_bayar",
+    accessorKey: "totalBayar",
     header: "Total Bayar",
+    cell: ({ row }) => {
+      return toIdr(row.original.totalBayar);
+    },
   },
   {
     id: "actions",

@@ -72,7 +72,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center justify-between py-4">
+      <div className="flex items-center justify-between py-4 gap-4">
         <div className="flex gap-1">
           <Input
             placeholder="Cari..."
@@ -80,24 +80,25 @@ export function DataTable<TData, TValue>({
               (table.getColumn(searchFilter.key)?.getFilterValue() as string) ??
               ""
             }
-            onChange={(event) =>
-              table
+            onChange={(event) => {
+              return table
                 .getColumn(searchFilter.key)
-                ?.setFilterValue(event.target.value)
-            }
+                ?.setFilterValue(event.target.value);
+            }}
             className="max-w-sm"
           />
-          <Select>
+          <Select
+            onValueChange={(value) => {
+              table.getColumn(searchFilter.key)?.setFilterValue("");
+              setSearchFilter({ key: value, value });
+            }}
+          >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder={searchFilter.value} />
             </SelectTrigger>
             <SelectContent>
               {keySearchFilter.map((item) => (
-                <SelectItem
-                  key={item.key}
-                  value={item.key}
-                  onClick={() => setSearchFilter(item)}
-                >
+                <SelectItem key={item.key} value={item.key}>
                   {item.value}
                 </SelectItem>
               ))}

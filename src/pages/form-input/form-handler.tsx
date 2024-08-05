@@ -38,7 +38,9 @@ const FormHandler = () => {
       transactionService.create(values),
     onSuccess: () => {
       form.reset();
-      toast.success("Transaction created successfully");
+      toast.success("Transaction created successfully", {
+        duration: 1000,
+      });
       navigate("/");
     },
   });

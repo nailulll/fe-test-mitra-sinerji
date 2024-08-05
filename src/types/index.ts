@@ -3,11 +3,11 @@ export type Transaction = {
   kode: string;
   tgl: Date;
   customer: Customer;
-  products: TransactionDetail[];
+  details: TransactionDetail[];
   subtotal: number;
   diskon: number;
   ongkir: number;
-  total_bayar: number;
+  totalBayar: number;
 };
 
 export type Customer = {
